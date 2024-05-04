@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+  :root{
+    --color-primary:44, 109, 169;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+  }
+}
+/* loading page */
+.loader {
+  display: inline-block;
+  position: relative;
+  border: 2px solid;
+  @apply h-24 w-24 rounded-full border-foreground/70;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+
+  &::after {
+    content: " ";
+    @apply absolute left-2.5 top-2.5 h-8 w-8 rounded-full bg-foreground;
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* loading page end */
