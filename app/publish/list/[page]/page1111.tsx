@@ -3,8 +3,12 @@ import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import { Divider } from "@nextui-org/divider";
-
-export default function PricingPage() {
+import ClientPagination from "@/components/pagination";
+interface Props {
+  params: { page: string;  };
+}
+export default function PricingPage({params}:Props) {
+  const {page} = params
   return (
     <section className="flex flex-col items-center justify-center gap-4 pb-8 md:pb-10">
       <div className="flex flex-col ">
@@ -37,6 +41,7 @@ export default function PricingPage() {
           ))}
         </div>
       </div>
+      <ClientPagination loop={true} disableAnimation={true} showControls total={10} page={Number(page)} size="lg" radius="sm"/>
     </section>
   );
 }

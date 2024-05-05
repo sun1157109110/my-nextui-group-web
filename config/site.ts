@@ -25,11 +25,11 @@ const siteConfig = {
     },
     {
       label: "发表论文",
-      href: "/publish",
+      href: "/publish/list/1",
     },
     {
       label: "团建活动",
-      href: "/activity",
+      href: "/activity/list/1",
     }
   ],
   researchList: [
@@ -122,47 +122,81 @@ const siteConfig = {
     avatar: faker.image.avatar(),
     label: ''
   }],
+  publish: [{
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Xingjie Luo,+ Zhiyu Jiang,+ Siqun Yang, Xiaoyu Ren, Tianli Wang* "Organocatalyzed Asymmetric Conjugate Addition of Alcohols to β-Fluoroalkyl Vinylsulfones by Bifunctional Phosphonium Salt Catalyst" Chem. Eur. J. 2024, e202401325.',
+    date: '2024-2-15',
+  }, {
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Access to Enantioenriched Allylic Alcohols via Peptide-Mimic Phosphonium Salt-Catalyzed Asymmetric Aerobic Hydroxylation',
+    date: '2024-2-15',
+  },
+  {
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Asymmetric Nucleophilic Additions Promoted by Quaternary Phosphonium Ion-Pair Catalysts',
+    date: '2024-2-15',
+  }, {
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Asymmetric Nucleophilic Additions Promoted by Quaternary Phosphonium Ion-Pair Catalysts',
+    date: '2024-2-15',
+  }, {
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Novel Stereo-Induction Pattern in Pudovik Addition/Phospha-Brook Rearrangement towards Chiral Trisubstituted Allenes',
+    date: '2024-4-15',
+  }, {
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Organocatalytic Dynamic Kinetic ResolutionEnabled Asymmetric Synthesis of Phosphorus-Containing Chiral Helicenes',
+    date: '2023-12-15',
+  }, {
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Atherton-Todd Reaction-Guided Enantioselective Synthesis of Axially Chiral Olefins via Bifunctional Phosphonium Salt-Regulating Ketone-Enol Tautomerism',
+    date: '2024-2-15',
+  }, {
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Enantioselective Organocatalytic Synthesis of Axially Chiral Aldehyde-containing Styrenes via SNAr Reaction-Guided Dynamic Kinetic Resolution',
+    date: '2024-2-15',
+  }],
   navMenuItems: [
-		{
-			label: "Profile",
-			href: "/profile",
-		},
-		{
-			label: "Dashboard",
-			href: "/dashboard",
-		},
-		{
-			label: "Projects",
-			href: "/projects",
-		},
-		{
-			label: "Team",
-			href: "/team",
-		},
-		{
-			label: "Calendar",
-			href: "/calendar",
-		},
-		{
-			label: "Settings",
-			href: "/settings",
-		},
-		{
-			label: "Help & Feedback",
-			href: "/help-feedback",
-		},
-		{
-			label: "Logout",
-			href: "/logout",
-		},
-	],
-	links: {
-		github: "https://github.com/nextui-org/nextui",
-		twitter: "https://twitter.com/getnextui",
-		docs: "https://nextui.org",
-		discord: "https://discord.gg/9b6yyZKmH4",
+    {
+      label: "Profile",
+      href: "/profile",
+    },
+    {
+      label: "Dashboard",
+      href: "/dashboard",
+    },
+    {
+      label: "Projects",
+      href: "/projects",
+    },
+    {
+      label: "Team",
+      href: "/team",
+    },
+    {
+      label: "Calendar",
+      href: "/calendar",
+    },
+    {
+      label: "Settings",
+      href: "/settings",
+    },
+    {
+      label: "Help & Feedback",
+      href: "/help-feedback",
+    },
+    {
+      label: "Logout",
+      href: "/logout",
+    },
+  ],
+  links: {
+    github: "https://github.com/nextui-org/nextui",
+    twitter: "https://twitter.com/getnextui",
+    docs: "https://nextui.org",
+    discord: "https://discord.gg/9b6yyZKmH4",
     sponsor: "https://patreon.com/jrgarciadev"
-	},
+  },
 }
 const phds = Array(2).fill(0).map(() => ({
   name: faker.person.fullName(),
@@ -171,7 +205,7 @@ const phds = Array(2).fill(0).map(() => ({
   avatar: faker.image.avatar(),
   label: ''
 }))
-const fakerMembers = (role:Role, num: number) => {
+const fakerMembers = (role: Role, num: number) => {
   return Array(num).fill(0).map(() => ({
     name: faker.person.fullName(),
     role: role,
@@ -180,5 +214,5 @@ const fakerMembers = (role:Role, num: number) => {
     label: ''
   }));
 }
-siteConfig.members.push(...fakerMembers(Role.PHD,2),...fakerMembers(Role.MASTER,6))
+siteConfig.members.push(...fakerMembers(Role.PHD, 2), ...fakerMembers(Role.MASTER, 6))
 export { siteConfig }

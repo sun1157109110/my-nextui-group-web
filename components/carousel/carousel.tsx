@@ -1,11 +1,4 @@
 "use client";
-// <div className=" overflow-hidden" ref={emblaRef}>
-//   <div className=" flex">
-//     <div className=" shrink-0 grow-0 basis-full">Slide 1</div>
-//     <div className=" shrink-0 grow-0 basis-full">Slide 2</div>
-//     <div className=" shrink-0 grow-0 basis-full">Slide 3</div>
-//   </div>
-// </div>
 
 import React, { useCallback, useEffect, useRef } from "react";
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
@@ -18,8 +11,9 @@ import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react";
-import Image from 'next/image'
 // import ClassNames from "embla-carousel-class-names";
+import { Image } from "@nextui-org/image";
+import NextImage from "next/image";
 import "./index.css";
 
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -138,12 +132,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                 <div className="embla__parallax__layer">
                   <Image
                     // className="embla__slide__img"
+                    as={NextImage}
                     className="embla__slide__img embla__parallax__img"
                     src={value}
-                    alt="Your alt text"
+                    alt="carousel_img"
                     width={1280}
                     height={480}
-                    priority={true}
                     quality={100}
                   />
                 </div>
