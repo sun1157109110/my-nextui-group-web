@@ -4,6 +4,7 @@
 .embla {
   position: relative;
   margin: auto;
+  width: 100%;
   --slide-height: 26rem;
   --slide-spacing: 1rem;
   --slide-size: 100%;
