@@ -155,6 +155,18 @@ const siteConfig = {
     img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
     title: 'Enantioselective Organocatalytic Synthesis of Axially Chiral Aldehyde-containing Styrenes via SNAr Reaction-Guided Dynamic Kinetic Resolution',
     date: '2024-2-15',
+  },{
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Enantioselective Organocatalytic Synthesis of Axially Chiral Aldehyde-containing Styrenes via SNAr Reaction-Guided Dynamic Kinetic Resolution',
+    date: '2024-2-15',
+  },{
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Enantioselective Organocatalytic Synthesis of Axially Chiral Aldehyde-containing Styrenes via SNAr Reaction-Guided Dynamic Kinetic Resolution',
+    date: '2024-2-15',
+  },{
+    img: faker.image.urlLoremFlickr({width:320,height:240,category:'nature'}),
+    title: 'Enantioselective Organocatalytic Synthesis of Axially Chiral Aldehyde-containing Styrenes via SNAr Reaction-Guided Dynamic Kinetic Resolution',
+    date: '2024-2-15',
   }],
   navMenuItems: [
     {
@@ -198,13 +210,7 @@ const siteConfig = {
     sponsor: "https://patreon.com/jrgarciadev"
   },
 }
-const phds = Array(2).fill(0).map(() => ({
-  name: faker.person.fullName(),
-  role: Role.PHD,
-  href: `/member/${faker.person.fullName()}`,
-  avatar: faker.image.avatar(),
-  label: ''
-}))
+
 const fakerMembers = (role: Role, num: number) => {
   return Array(num).fill(0).map(() => ({
     name: faker.person.fullName(),

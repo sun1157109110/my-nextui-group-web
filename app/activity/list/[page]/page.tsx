@@ -12,7 +12,21 @@ interface Props {
   params: { page: string };
 }
 export default function PricingPage({ params }: Props) {
-  const { page } = params;
+  const page = Number(params.page);
+  const totalNum = siteConfig.publish.length;
+  if(page>totalNum)return
+  const pageSize = 9;
+  const colSize = 3;
+  const total = Math.ceil(totalNum / pageSize);
+  let nowRow = 3;
+  //最后一页并且不是刚好满数
+  if (page >= total && total % pageSize !== 0) {
+    nowRow = Math.ceil((total % pageSize) / colSize);
+  }
+  const start = (page - 1 < 0 ? 0 : page - 1) * pageSize;
+  const end = start + pageSize;
+  const data = siteConfig.publish.slice(start, end);
+  
   return (
     <section className="flex flex-col items-center justify-center gap-4 pb-8 md:pb-10">
       <div className="flex flex-col ">
@@ -21,8 +35,8 @@ export default function PricingPage({ params }: Props) {
           <div className="text-xl font-semibold">Recent Publications</div>
         </div>
         <Divider className="mb-3 bg-indigo" />
-        <div className="grid gap-4 grid-cols-3 grid-rows-3 my-3">
-          {siteConfig.publish.map((item) => (
+        <div className={`grid gap-4 grid-cols-3 grid-rows-${nowRow} my-3`}>
+          {data.map((item) => (
             <Card isHoverable={true} isPressable={true}>
               <CardHeader className="relative">
                 <Link href={""}>
@@ -52,13 +66,14 @@ export default function PricingPage({ params }: Props) {
         </div>
       </div>
       <ClientPagination
-        loop={true}
+        loop
         disableAnimation={true}
         showControls
-        total={10}
-        page={Number(page)}
+        total={total}
+        page={page}
         size="lg"
         radius="sm"
+        prefix="/activity/list/"
       />
     </section>
   );

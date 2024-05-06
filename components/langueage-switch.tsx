@@ -1,27 +1,29 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@nextui-org/switch";
-import { useTheme } from "next-themes";
+// import { useTheme } from "next-themes";
 import {useIsSSR} from "@react-aria/ssr";
-import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
+
+import { ChineseIcon,EnglishIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 
-export interface ThemeSwitchProps {
+export interface LanguageSwitchProps {
 	className?: string;
 	classNames?: SwitchProps["classNames"];
 }
 
-export const ThemeSwitch: FC<ThemeSwitchProps> = ({
+export const LanguageSwitch: FC<LanguageSwitchProps> = ({
 	className,
 	classNames,
 }) => {
-	const { theme, setTheme } = useTheme();
+	const [lan, setLan] = useState('chinese');
+	// const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
 
 	const onChange = () => {
-		theme === "light" ? setTheme("dark") : setTheme("light");
+		lan === 'chinese' ? setLan('english') : setLan('chinese');
 	};
 
 	const {
@@ -32,8 +34,8 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 		getInputProps,
 		getWrapperProps,
 	} = useSwitch({
-		isSelected: theme === "light" || isSSR,
-    "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
+		isSelected: lan === 'chinese' || isSSR,
+    "aria-label": `Switch to ${lan === 'chinese' || isSSR ? 'chinese' : 'english'} mode`,
 		onChange,
 	});
 
@@ -69,7 +71,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 					),
 				})}
 			>
-			 {!isSelected || isSSR ? <SunFilledIcon size={22} /> : <MoonFilledIcon size={22} />}
+			 {!isSelected || isSSR ? <ChineseIcon size={22} /> : <EnglishIcon size={22} />}
 			</div>
 		</Component>
 	);

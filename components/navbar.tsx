@@ -7,29 +7,16 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
 import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
-
 import { link as linkStyles } from "@nextui-org/theme";
-
 import { siteConfig } from "@/config/site";
 import NextLink from "next/link";
-import clsx from "clsx";
-
 import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Icons,
-} from "@/components/icons";
-
-import { Logo } from "@/components/icons";
+import { SearchIcon, NextUILogo } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import { LanguageSwitch } from "./langueage-switch";
 
 export const Navbar = () => {
   const searchInput = (
@@ -61,7 +48,7 @@ export const Navbar = () => {
             className="flex justify-start items-center space-x-2"
             href="/"
           >
-            <Icons.logo className="h-8 w-8 text-indigo" />
+            <NextUILogo className="h-8 w-8 text-indigo" />
             <p className="font-bold text-default">Niu Group</p>
           </NextLink>
         </NavbarBrand>
@@ -70,10 +57,10 @@ export const Navbar = () => {
             <NavbarItem key={item.href}>
               <NextLink
                 className={cn(
-									linkStyles({ color: "foreground",isBlock:true }),
-									"hover:after:rounded",
-									"data-[active=true]:text-primary data-[active=true]:font-medium"
-								)}
+                  linkStyles({ color: "foreground", isBlock: true }),
+                  "hover:after:rounded",
+                  "data-[active=true]:text-primary data-[active=true]:font-medium"
+                )}
                 color="foreground"
                 href={item.href}
               >
@@ -90,15 +77,7 @@ export const Navbar = () => {
       >
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal href={siteConfig.links.twitter} aria-label="Twitter">
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal href={siteConfig.links.discord} aria-label="Discord">
-            <DiscordIcon className="text-default-500" />
-          </Link>
-          <Link isExternal href={siteConfig.links.github} aria-label="Github">
-            <GithubIcon className="text-default-500" />
-          </Link>
+          <LanguageSwitch />
           <ThemeSwitch />
         </NavbarItem>
         {/* <NavbarItem className="hidden md:flex">
@@ -116,9 +95,7 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal href={siteConfig.links.github} aria-label="Github">
-          <GithubIcon className="text-default-500" />
-        </Link>
+        <LanguageSwitch />
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
