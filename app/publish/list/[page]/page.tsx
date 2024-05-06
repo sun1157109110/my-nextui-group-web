@@ -4,9 +4,9 @@ import { Divider } from "@nextui-org/divider";
 import ClientPagination from "@/components/pagination";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
-import { Suspense } from "react";
-import { Skeleton } from "@nextui-org/skeleton";
-import NextImage from "next/image";
+// import { Suspense } from "react";
+// import { Skeleton } from "@nextui-org/skeleton";
+// import NextImage from "next/image";
 
 interface Props {
   params: { page: string };
@@ -27,7 +27,7 @@ export default function PricingPage({ params }: Props) {
               <CardHeader className="relative">
                 <Link href={""} className="w-full h-full">
                   <Image
-                    as={NextImage}
+                    // as={NextImage}
                     isZoomed={true}
                     src={item.img}
                     alt=""
