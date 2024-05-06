@@ -126,17 +126,17 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <section className="embla">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container">
-          {slides.map((value) => (
+          {slides.map((value,index) => (
             <div className="embla__slide" key={value}>
               <div className="embla__parallax">
                 <div className="embla__parallax__layer">
                   <Image
-                    // className="embla__slide__img"
                     as={NextImage}
                     className="embla__slide__img embla__parallax__img"
                     src={value}
                     alt="carousel_img"
                     isZoomed
+                    priority={index===0?true:false}
                     width={1280}
                     height={480}
                     quality={100}

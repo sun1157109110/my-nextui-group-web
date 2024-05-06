@@ -1,4 +1,6 @@
-import { nextui } from "@nextui-org/theme";
+import {
+  nextui
+} from "@nextui-org/theme";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -29,9 +31,28 @@ module.exports = {
               900: "#001623",
             },
             muted: {
-              DEFAULT: "hsl(var(--muted))",
-              foreground: "hsl(var(--muted-foreground))",
+              DEFAULT: "#F1F5F9",
+              foreground: "#64748B",
             },
+            primary: {
+              DEFAULT: '#0F172A',
+              foreground: '#F8FAFC'
+            },
+            secondary: {
+              DEFAULT: '#F1F5F9',
+              foreground: '#0F172A',
+              100: "#fcfdfe",
+              200: "#f9fbfd",
+              300: "#f7f9fb",
+              400: "#f4f7fa",
+              500: "#f1f5f9",
+              600: "#c1c4c7",
+              700: "#919395",
+              800: "#606264",
+              900: "#303132"
+            },
+            background: '#FFFFFF',
+            foreground: '#0F172A'
           },
         },
         dark: {

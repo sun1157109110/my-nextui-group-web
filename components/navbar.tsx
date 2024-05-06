@@ -49,7 +49,7 @@ export const Navbar = () => {
             href="/"
           >
             <NextUILogo className="h-8 w-8 text-indigo" />
-            <p className="font-bold text-default">Niu Group</p>
+            <p className="font-bold text-muted-foreground">Niu Group</p>
           </NextLink>
         </NavbarBrand>
         <ul className="ml-2 hidden justify-start gap-4 lg:flex">
@@ -57,11 +57,11 @@ export const Navbar = () => {
             <NavbarItem key={item.href}>
               <NextLink
                 className={cn(
-                  linkStyles({ color: "foreground", isBlock: true }),
-                  "hover:after:rounded",
+                  linkStyles({isBlock: true,color:'secondary' }),
+                  "hover:after:rounded hover:after:bg-secondary/90 hover:after:z-[-1] ",
                   "data-[active=true]:font-medium data-[active=true]:text-primary",
+                  "text-muted-foreground text-base"
                 )}
-                color="foreground"
                 href={item.href}
               >
                 {item.label}
