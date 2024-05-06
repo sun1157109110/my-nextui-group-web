@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   Table,
   TableHeader,
@@ -6,7 +6,7 @@ import {
   TableColumn,
   TableRow,
   TableCell,
-  getKeyValue
+  getKeyValue,
 } from "@nextui-org/table";
 import React from "react";
 
@@ -61,7 +61,9 @@ export default function TestTable() {
       <TableBody items={rows}>
         {(item) => (
           <TableRow key={item.key}>
-            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
+            {(columnKey) => (
+              <TableCell>{getKeyValue(item, columnKey)}</TableCell>
+            )}
           </TableRow>
         )}
       </TableBody>

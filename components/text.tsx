@@ -1,6 +1,6 @@
 export function TypographyDemo() {
   return (
-    <div  className="border rounded-md p-4 ">
+    <div className="rounded-md border p-4 ">
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
         The Joke Tax Chronicles
       </h1>
@@ -68,7 +68,7 @@ export function TypographyDemo() {
       <div className="my-6 w-full overflow-y-auto">
         <table className="w-full">
           <thead>
-            <tr className="m-0 border-t p-0 even:bg-muted">
+            <tr className="even:bg-muted m-0 border-t p-0">
               <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
                 King's Treasury
               </th>
@@ -78,7 +78,7 @@ export function TypographyDemo() {
             </tr>
           </thead>
           <tbody>
-            <tr className="m-0 border-t p-0 even:bg-muted">
+            <tr className="even:bg-muted m-0 border-t p-0">
               <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                 Empty
               </td>
@@ -86,7 +86,7 @@ export function TypographyDemo() {
                 Overflowing
               </td>
             </tr>
-            <tr className="m-0 border-t p-0 even:bg-muted">
+            <tr className="even:bg-muted m-0 border-t p-0">
               <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                 Modest
               </td>
@@ -94,7 +94,7 @@ export function TypographyDemo() {
                 Satisfied
               </td>
             </tr>
-            <tr className="m-0 border-t p-0 even:bg-muted">
+            <tr className="even:bg-muted m-0 border-t p-0">
               <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                 Full
               </td>
@@ -115,5 +115,5 @@ export function TypographyDemo() {
         and always be careful of bad ideas.
       </p>
     </div>
-  )
+  );
 }

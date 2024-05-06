@@ -14,7 +14,7 @@ interface Props {
 export default function PricingPage({ params }: Props) {
   const page = Number(params.page);
   const totalNum = siteConfig.publish.length;
-  if(page>totalNum)return
+  if (page > totalNum) return;
   const pageSize = 9;
   const colSize = 3;
   const total = Math.ceil(totalNum / pageSize);
@@ -26,16 +26,16 @@ export default function PricingPage({ params }: Props) {
   const start = (page - 1 < 0 ? 0 : page - 1) * pageSize;
   const end = start + pageSize;
   const data = siteConfig.publish.slice(start, end);
-  
+
   return (
     <section className="flex flex-col items-center justify-center gap-4 pb-8 md:pb-10">
       <div className="flex flex-col ">
-        <div className="flex gap-4 py-2 items-center">
-          <Divider orientation="vertical" className="w-1 h-7 bg-indigo" />
+        <div className="flex items-center gap-4 py-2">
+          <Divider orientation="vertical" className="h-7 w-1 bg-indigo" />
           <div className="text-xl font-semibold">Recent Publications</div>
         </div>
         <Divider className="mb-3 bg-indigo" />
-        <div className={`grid gap-4 grid-cols-3 grid-rows-${nowRow} my-3`}>
+        <div className={`grid grid-cols-3 gap-4 grid-rows-${nowRow} my-3`}>
           {data.map((item) => (
             <Card isHoverable={true} isPressable={true}>
               <CardHeader className="relative">
@@ -53,12 +53,12 @@ export default function PricingPage({ params }: Props) {
               <CardBody>
                 <Link
                   href={""}
-                  className=" transition-colors line-clamp-2 font-semibold sm:text-sm md:text-base 2xl:text-lg hover:text-indigo"
+                  className=" line-clamp-2 font-semibold transition-colors hover:text-indigo sm:text-sm md:text-base 2xl:text-lg"
                 >
                   {item.title}
                 </Link>
               </CardBody>
-              <CardFooter className=" font-light text-sm">
+              <CardFooter className=" text-sm font-light">
                 {item.date}
               </CardFooter>
             </Card>

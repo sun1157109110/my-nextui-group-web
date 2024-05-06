@@ -34,16 +34,16 @@ export default function PricingPage({ params }: Props) {
   return (
     <section className="flex flex-col items-center justify-center gap-4 pb-8 md:pb-10">
       <div className="flex flex-col ">
-        <div className="flex gap-4 py-2 items-center">
-          <Divider orientation="vertical" className="w-1 h-7 bg-indigo" />
+        <div className="flex items-center gap-4 py-2">
+          <Divider orientation="vertical" className="h-7 w-1 bg-indigo" />
           <div className="text-xl font-semibold">Recent Publications</div>
         </div>
         <Divider className="mb-3 bg-indigo" />
-        <div className={`grid gap-4 grid-cols-4 grid-rows-${nowRow} my-3`}>
+        <div className={`grid grid-cols-4 gap-4 grid-rows-${nowRow} my-3`}>
           {data.map((item) => (
             <Card isHoverable={true} isPressable={true}>
               <CardHeader className="relative">
-                <Link href={""} className="w-full h-full">
+                <Link href={""} className="h-full w-full">
                   <Image
                     // as={NextImage}
                     isZoomed={true}
@@ -57,12 +57,12 @@ export default function PricingPage({ params }: Props) {
               <CardBody>
                 <Link
                   href={""}
-                  className="line-clamp-2 font-semibold sm:text-xs md:text-sm 2xl:text-base hover:text-indigo"
+                  className="line-clamp-2 font-semibold hover:text-indigo sm:text-xs md:text-sm 2xl:text-base"
                 >
                   {item.title}
                 </Link>
               </CardBody>
-              <CardFooter className=" font-light text-sm">
+              <CardFooter className=" text-sm font-light">
                 {item.date}
               </CardFooter>
             </Card>

@@ -5,15 +5,15 @@ import Link from "next/link";
 import { Divider } from "@nextui-org/divider";
 import ClientPagination from "@/components/pagination";
 interface Props {
-  params: { page: string;  };
+  params: { page: string };
 }
-export default function PricingPage({params}:Props) {
-  const {page} = params
+export default function PricingPage({ params }: Props) {
+  const { page } = params;
   return (
     <section className="flex flex-col items-center justify-center gap-4 pb-8 md:pb-10">
       <div className="flex flex-col ">
-        <div className="flex gap-4 py-2 items-center">
-          <Divider orientation="vertical" className="w-1 h-7 bg-indigo" />
+        <div className="flex items-center gap-4 py-2">
+          <Divider orientation="vertical" className="h-7 w-1 bg-indigo" />
           <div className="text-xl font-semibold">Recent Publications</div>
         </div>
         <Divider className="mb-3 bg-indigo" />
@@ -23,7 +23,7 @@ export default function PricingPage({params}:Props) {
               <div className="flex items-center gap-4 py-2">
                 <Link href={""}>
                   <Image
-                    className=" shrink-0 flex"
+                    className=" flex shrink-0"
                     src={item.imgSrc}
                     alt=""
                     width={120}
@@ -41,7 +41,15 @@ export default function PricingPage({params}:Props) {
           ))}
         </div>
       </div>
-      <ClientPagination loop={true} disableAnimation={true} showControls total={10} page={Number(page)} size="lg" radius="sm"/>
+      <ClientPagination
+        loop={true}
+        disableAnimation={true}
+        showControls
+        total={10}
+        page={Number(page)}
+        size="lg"
+        radius="sm"
+      />
     </section>
   );
 }

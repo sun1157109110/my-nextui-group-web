@@ -5,8 +5,8 @@ import Link from "next/link";
 
 export default function News() {
   return (
-    <div className="flex flex-col basis-1/2 ">
-      <div className="flex gap-4 py-2 items-center">
+    <div className="flex basis-1/2 flex-col ">
+      <div className="flex items-center gap-4 py-2">
         <Divider orientation="vertical" className="w-1 bg-indigo" />
         <div className="text-xl font-semibold">新闻动态</div>
       </div>

@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-  :root{
-    --color-primary:44, 109, 169;
+@layer base {
+  :root {
+    --color-primary: 44, 109, 169;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
   }

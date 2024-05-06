@@ -1,11 +1,11 @@
-'use client'
+"use client";
 import React from "react";
 import {
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
   DropdownSection,
-  DropdownItem
+  DropdownItem,
 } from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
 
@@ -13,11 +13,7 @@ export default function TestDropDown() {
   return (
     <Dropdown>
       <DropdownTrigger>
-        <Button 
-          variant="bordered" 
-        >
-          Open Menu
-        </Button>
+        <Button variant="bordered">Open Menu</Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Static Actions">
         <DropdownItem key="new">New file</DropdownItem>
