@@ -1,18 +1,11 @@
-import { PrismaClient } from '@prisma/client'
+import { faker } from '@faker-js/faker';
+import { News_Type, Role, PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient();
-enum News_Type {
-  ACTIVITY = 'ACTIVITY',
-  LECTURE = 'LECTURE',
-  PUBLISH = 'PUBLISH'
-}
-enum Role {
-  PROFESSOR = "PROFESSOR",
-  PHD = "PHD",
-  MASTER = "MASTER",
-  GRADUATE = "MASTER",
-}
+
 async function main() {
+  await prisma.members.deleteMany()
+  await prisma.news.deleteMany()
   const news1 = await prisma.news.create({
     data: {
       content: 'test',
@@ -23,16 +16,51 @@ async function main() {
       time: new Date(),
     }
   })
-  const user = await prisma.members.create({
-    data:{
-      name:'jason',
-      description:'test',
-      phoneNumber:'111111',
-      role:Role.MASTER,
-      email:'1111@qq.com'
+  const professor = await prisma.members.create({
+    data: {
+      name: faker.person.fullName(),
+      description: faker.person.jobDescriptor(),
+      phoneNumber: faker.phone.number(),
+      avatar: faker.image.avatar(),
+      role: Role.MASTER,
+      email: faker.internet.email()
+    }
+  });
+  const phd = await prisma.members.create({
+    data: {
+      name: faker.person.fullName(),
+      description: faker.person.jobDescriptor(),
+      phoneNumber: faker.phone.number(),
+      avatar: faker.image.avatar(),
+      role: Role.PHD,
+      email: faker.internet.email()
     }
   })
-  console.log(news1,user);
+  const master = await prisma.members.createMany({
+    data: [{
+      name: faker.person.fullName(),
+      description: faker.person.jobDescriptor(),
+      phoneNumber: faker.phone.number(),
+      avatar: faker.image.avatar(),
+      role: Role.MASTER,
+      email: faker.internet.email()
+    }, {
+      name: faker.person.fullName(),
+      description: faker.person.jobDescriptor(),
+      phoneNumber: faker.phone.number(),
+      avatar: faker.image.avatar(),
+      role: Role.MASTER,
+      email: faker.internet.email()
+    }, {
+      name: faker.person.fullName(),
+      description: faker.person.jobDescriptor(),
+      phoneNumber: faker.phone.number(),
+      avatar: faker.image.avatar(),
+      role: Role.MASTER,
+      email: faker.internet.email()
+    }]
+  })
+  console.log(news1);
 
 }
 main()
