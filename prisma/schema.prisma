@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model Members {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique()
+  description String
+  email       String   @unique()
+  avatar      String?
+  phoneNumber String?  @unique()
+  createdAt   DateTime @default(now())
+  updateAt    DateTime @updatedAt()
+  role        Role
+}
+
+model Publish {
+  id        Int      @id @default(autoincrement())
+  title     String   @unique()
+  content   String?
+  href      String
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt()
+}
+
+model News {
+  id        Int       @id @default(autoincrement())
+  content   String
+  title     String    @unique()
+  href      String    
+  views     Int       @default(0)
+  time      DateTime
+  createdAt DateTime  @default(now())
+  updateAt  DateTime  @updatedAt()
+  type      News_Type
+}
+
+enum News_Type {
+  ACTIVITY @map("0")
+  LECTURE  @map("1")
+  PUBLISH  @map("2")
+}
+enum Role {
+  PROFESSOR @map("0")
+  PHD       @map("1")
+  MASTER    @map("2")
+  GRADUATE  @map("3")
+}
