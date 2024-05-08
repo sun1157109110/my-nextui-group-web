@@ -49,6 +49,7 @@ export default function PricingPage({ params }: Props) {
         page={Number(page)}
         size="lg"
         radius="sm"
+        prefix="/publish/list/"
       />
     </section>
   );

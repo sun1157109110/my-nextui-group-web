@@ -6,7 +6,6 @@ import { Avatar } from "@nextui-org/avatar";
 
 export default function Members() {
   let membersData = groupBy(siteConfig.members);
-  console.log(membersData);
   type memObjType = (typeof siteConfig.members)[number];
   return (
     <section className="flex flex-col items-center justify-center gap-4 pb-8 md:pb-10">

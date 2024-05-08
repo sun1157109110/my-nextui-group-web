@@ -41,7 +41,7 @@ export default function PricingPage({ params }: Props) {
         <Divider className="mb-3 bg-indigo" />
         <div className={`grid grid-cols-4 gap-4 grid-rows-${nowRow} my-3`}>
           {data.map((item) => (
-            <Card isHoverable={true} isPressable={true}>
+            <Card isHoverable={true} isPressable={true} key={item.title}>
               <CardHeader className="relative">
                 <Link href={""} className="h-full w-full">
                   <Image
