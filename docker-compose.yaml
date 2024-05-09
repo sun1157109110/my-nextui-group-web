@@ -1,24 +1,46 @@
-version: "3.9"
+version: "3.8"
+
+# networks:
+#   groupweb-prod:
+#     driver: bridge
+
 services:
   niugroup:
-    build: .
+    container_name: niugroup
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # env_file:
+    #   - .env
+      # - .env.production
+    restart: always
     ports:
-      - "3000:3000"
-    # environment:
-    #     - POSTGRES_PRISMA_URL=postgresql://postgres:postgres@postgres:5432/aspoem
-    #     - POSTGRES_URL_NON_POOLING=postgresql://postgres:postgres@postgres:5432/aspoem
-    #     - TOKEN=secret
-    #     - NEXT_PUBLIC_GA_ID=xx
-    #     - NEXT_PUBLIC_MC_ID=xx
-
+      - 3000:3000
+    # networks:
+    #   - groupweb-prod
     # depends_on:
-    #   - postgres
-
-  # postgres:
-  #   image: postgres:16.2
-  #   ports:
-  #     - 5432:5432
+    #   mysql:
+    #     condition: service_healthy
+      
+  # mysql:
+  #   image: mysql:8.0
+  #   container_name: next-app-mysql
+  #   command: --default-authentication-plugin=caching_sha2_password
+  #   restart: unless-stopped
+  #   # volumes:
+  #   #   - ./docker/data/mysql/:/var/lib/mysql/
   #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: postgres
-  #     POSTGRES_DB: aspoem
+  #     - MYSQL_ROOT_PASSWORD=admin
+  #     - MYSQL_DATABASE=notes
+  #     - MYSQL_USER=notes
+  #     - MYSQL_PASSWORD=cpZfriEBbmJjWeiR
+  #   ports:
+  #     - '3306:3306'
+  #   healthcheck:
+  #     test: ['CMD', 'mysqladmin', 'ping', '-h127.0.0.1', '-P3306']
+  #     interval: 5s
+  #     timeout: 2s
+  #     retries: 20
+  #   networks:
+  #     - groupweb-prod
+

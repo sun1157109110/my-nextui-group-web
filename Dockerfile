@@ -1,24 +1,30 @@
-FROM node:20-alpine3.16 AS base
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-ENV SKIP_ENV_VALIDATION=true
+FROM node:18-alpine AS base
 
-RUN corepack enable
-COPY . /app
+FROM base AS builder
+
 WORKDIR /app
 
-FROM base AS prod-deps
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod  --ignore-scripts
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install prisma
+COPY . .
 
-FROM base AS build
-RUN  --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install 
-RUN pnpm run build
+RUN npm i --registry=https://registry.npmmirror.com;
 
-FROM base
-COPY --from=prod-deps /app/node_modules /app/node_modules
-COPY --from=build /app/.next /app/.next
+# RUN npx prisma generate
 
-EXPOSE 3000
-CMD [ "pnpm", "start" ]
-# CMD [ "pnpm", "docker:start" ]
+RUN npm run build;
+
+FROM base AS runner
+
+WORKDIR /app
+
+COPY --from=builder /app/public ./public
+
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# COPY prisma ./prisma/
+COPY startup.sh ./startup.sh
+RUN chmod +x /app/startup.sh
+
+ENTRYPOINT ["sh", "/app/startup.sh"]

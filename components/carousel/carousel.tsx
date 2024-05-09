@@ -130,12 +130,12 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
             <div className="embla__slide" key={value}>
               <div className="embla__parallax">
                 <div className="embla__parallax__layer">
-                  <Image
-                    as={NextImage}
+                  <NextImage
+                    // as={NextImage}
                     className="embla__slide__img embla__parallax__img"
                     src={value}
                     alt="carousel_img"
-                    isZoomed
+                    // isZoomed
                     priority={index === 0 ? true : false}
                     width={1280}
                     height={480}
