@@ -5,19 +5,18 @@ import ClientPagination from "@/components/pagination";
 import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/card";
 import { Image } from "@nextui-org/image";
 import { redirect } from "next/navigation";
-// import { Suspense } from "react";
-// import { Skeleton } from "@nextui-org/skeleton";
-// import NextImage from "next/image";
+import { isMobile } from "@/lib/utils";
 
 interface Props {
   params: { page: string };
 }
 export default function PricingPage({ params }: Props) {
+  const ismob = isMobile()
   const page = Number(params.page);
   const totalNum = siteConfig.publish.length;
 
   const pageSize = 12;
-  const colSize = 4;
+  const colSize = ismob?1:4;
   const total = Math.ceil(totalNum / pageSize);
   if (page > total) {
     throw new Error("Page not found");
@@ -30,7 +29,7 @@ export default function PricingPage({ params }: Props) {
   const start = (page - 1 < 0 ? 0 : page - 1) * pageSize;
   const end = start + pageSize;
   const data = siteConfig.publish.slice(start, end);
-
+  
   return (
     <section className="flex flex-col items-center justify-center gap-4 pb-8 md:pb-10">
       <div className="flex flex-col ">
@@ -39,9 +38,9 @@ export default function PricingPage({ params }: Props) {
           <div className="text-xl font-semibold">Recent Publications</div>
         </div>
         <Divider className="mb-3 bg-indigo" />
-        <div className={`grid grid-cols-4 gap-4 grid-rows-${nowRow} my-3`}>
-          {data.map((item) => (
-            <Card isHoverable={true} isPressable={true} key={item.title}>
+        <div className={`grid grid-cols-1 sm:grid-cols-4 gap-4 grid-rows-${nowRow} my-3`}>
+          {data.map((item,index) => (
+            <Card isHoverable={true} isPressable={true} key={item.title+index}>
               <CardHeader className="relative">
                 <Link href={""} className="h-full w-full">
                   <Image

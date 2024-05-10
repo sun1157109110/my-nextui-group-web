@@ -7,16 +7,19 @@ import { Image } from "@nextui-org/image";
 // import { Suspense } from "react";
 // import { Skeleton } from "@nextui-org/skeleton";
 import NextImage from "next/image";
+import { isMobile } from "@/lib/utils";
 
 interface Props {
   params: { page: string };
 }
 export default function PricingPage({ params }: Props) {
+  const ismob = isMobile()
   const page = Number(params.page);
   const totalNum = siteConfig.publish.length;
   if (page > totalNum) return;
   const pageSize = 9;
-  const colSize = 3;
+  const colSize = ismob?1:3;
+
   const total = Math.ceil(totalNum / pageSize);
   let nowRow = 3;
   //最后一页并且不是刚好满数
@@ -35,7 +38,7 @@ export default function PricingPage({ params }: Props) {
           <div className="text-xl font-semibold">Recent Publications</div>
         </div>
         <Divider className="mb-3 bg-indigo" />
-        <div className={`grid grid-cols-3 gap-4 grid-rows-${nowRow} my-3`}>
+        <div className={`grid grid-cols-1 sm:grid-cols-3 gap-4 grid-rows-${nowRow} my-3`}>
           {data.map((item) => (
             <Card isHoverable={true} isPressable={true} key={item.title}>
               <CardHeader className="relative">

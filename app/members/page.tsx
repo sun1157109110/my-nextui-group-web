@@ -13,32 +13,26 @@ export default function Members() {
         {Object.keys(membersData).map((item) => (
           <>
             <div className="pt-4" key={item}>
-              <h2 className="scroll-m-20 pb-4 text-2xl font-semibold tracking-tight first:mt-0">
+              <h2 className="scroll-m-20 pb-4 text-lg sm:text-2xl font-semibold tracking-tight first:mt-0">
                 {item}
               </h2>
-              <ul className="flex flex-wrap items-center gap-6">
-                {membersData[item].map((memObj: memObjType) => (
+              <ul className="flex flex-wrap items-center sm:gap-6">
+                {membersData[item].map((memObj: memObjType, index: number) => (
                   <li
-                    key={memObj.name}
-                    className="flex flex-col items-center justify-center p-2"
+                    key={memObj.name + index}
+                    className="basis-1/2  sm:basis-auto flex flex-col items-center justify-center p-2"
                   >
-                    <Link href={""}>
-                      {/* <Avatar className="w-48 h-48 outline-none bg-muted-foreground/50 hover:ring-indigo-500 hover:ring-offset-[6px] transition-all ring-2 ring-offset-[5px] ring-offset-background dark:ring-offset-background-dark ring-muted-foreground/50">
-                        <AvatarImage src={memObj.avatar} alt="@shadcn" />
-                        <AvatarFallback delayMs={200}>
-                          <User className="w-full h-full text-muted-foreground " />
-                        </AvatarFallback>
-                      </Avatar> */}
-                      <Avatar
-                        isBordered
-                        showFallback
-                        src={memObj.avatar}
-                        className="h-48 w-48"
-                      ></Avatar>
+                    <Avatar
+                      isBordered
+                      as={Link}
+                      href={""}
+                      showFallback
+                      src={memObj.avatar}
+                      className="h-20 w-20 sm:h-48 sm:w-48"
+                    ></Avatar>
+                    <Link href={''} className=" py-3 text-center text-sm font-semibold text-muted-foreground hover:text-indigo sm:text-xl">
+                      {memObj.name}
                     </Link>
-                    <div className=" text-muted-foreground p-4 text-center text-xl font-semibold hover:text-indigo">
-                      <Link href={""}>{memObj.name}</Link>
-                    </div>
                   </li>
                 ))}
               </ul>
