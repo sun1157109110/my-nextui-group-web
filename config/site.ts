@@ -243,36 +243,24 @@ const siteConfig = {
   ],
   navMenuItems: [
     {
-      label: "Profile",
-      href: "/profile",
+      label: "首页",
+      href: "/",
     },
     {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: "组内成员",
+      href: "/members",
     },
     {
-      label: "Projects",
-      href: "/projects",
+      label: "科研方向",
+      href: "/research",
     },
     {
-      label: "Team",
-      href: "/team",
+      label: "发表论文",
+      href: "/publish/list/1",
     },
     {
-      label: "Calendar",
-      href: "/calendar",
-    },
-    {
-      label: "Settings",
-      href: "/settings",
-    },
-    {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
+      label: "团建活动",
+      href: "/activity/list/1",
     },
   ],
   links: {

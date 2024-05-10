@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      {
+    remotePatterns: [{
         protocol: "https",
         hostname: "loremflickr.com",
         port: "",
@@ -16,7 +15,10 @@ const nextConfig = {
       },
     ],
   },
-  output: 'standalone'
+  output: 'standalone',
+  experimental: {
+    optimizePackageImports: ['package-name'],
+  },
 };
 
 module.exports = nextConfig;

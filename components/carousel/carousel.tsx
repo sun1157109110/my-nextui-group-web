@@ -122,24 +122,27 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       .on("reInit", tweenParallax)
       .on("scroll", tweenParallax);
   }, [emblaApi, tweenParallax, setTweenFactor, setTweenNodes]);
+
   return (
-    <section className="embla">
+    <section className="embla overflow-hidden rounded sm:rounded-lg">
       <div className="embla__viewport" ref={emblaRef}>
-        <div className="embla__container">
+        <div className="embla__container h-fit">
           {slides.map((value, index) => (
-            <div className="embla__slide" key={value}>
+            <div className="embla__slide h-40 sm:h-96 " key={value}>
               <div className="embla__parallax">
                 <div className="embla__parallax__layer">
-                  <NextImage
+                  <Image
                     // as={NextImage}
-                    className="embla__slide__img embla__parallax__img"
+                    suppressHydrationWarning={true}
+                    className="embla__slide__img embla__parallax__img h-full"
+                    classNames={{ zoomedWrapper: "h-full" }}
                     src={value}
                     alt="carousel_img"
-                    // isZoomed
-                    priority={index === 0 ? true : false}
-                    width={1280}
+                    isZoomed
+                    // priority={index === 0 ? true : false}
+                    width={1500}
                     height={480}
-                    quality={100}
+                    // quality={100}
                   />
                 </div>
               </div>
@@ -149,7 +152,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       </div>
       <PrevButton onClick={onPrevButtonClick} disabled={prevBtnDisabled} />
       <NextButton onClick={onNextButtonClick} disabled={nextBtnDisabled} />
-      <div className="embla__dots">
+      <div className="embla__dots !hidden sm:!flex">
         {scrollSnaps.map((_, index) => (
           <DotButton
             key={index}

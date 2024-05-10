@@ -6,7 +6,15 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 export function isMobile() {
-  return "ontouchstart" in document.documentElement;
+  if (typeof document !== 'undefined') {
+    // 客户端代码，可以安全使用 document
+    return "ontouchstart" in document?.documentElement;
+  } else {
+    // 服务器端或其他环境的代码
+    return false
+  }
+  // return "ontouchstart" in document?.documentElement;
+
 }
 export function groupBy(objs: any[]) {
   let res: any = {};

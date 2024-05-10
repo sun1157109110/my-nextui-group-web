@@ -52,7 +52,7 @@ export const Navbar = () => {
             <p className="font-bold text-muted-foreground">Niu Group</p>
           </NextLink>
         </NavbarBrand>
-        <ul className="ml-2 hidden justify-start gap-4 lg:flex">
+        <ul className="ml-2 hidden justify-start gap-4  md:flex">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
               <NextLink
@@ -80,18 +80,6 @@ export const Navbar = () => {
           <LanguageSwitch />
           <ThemeSwitch />
         </NavbarItem>
-        {/* <NavbarItem className="hidden md:flex">
-					<Button
-            isExternal
-						as={Link}
-						className="text-sm font-normal text-default-600 bg-default-100"
-						href={siteConfig.links.sponsor}
-						startContent={<HeartFilledIcon className="text-danger" />}
-						variant="flat"
-					>
-						Sponsor
-					</Button>
-				</NavbarItem> */}
       </NavbarContent>
 
       <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
@@ -106,14 +94,7 @@ export const Navbar = () => {
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
+                href={item.href}
                 size="lg"
               >
                 {item.label}
