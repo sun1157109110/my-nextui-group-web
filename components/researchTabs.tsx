@@ -5,9 +5,9 @@ import { Divider } from "@nextui-org/divider";
 import { Tabs, Tab } from "@nextui-org/tabs";
 import { isMobile } from "@/lib/utils";
 export default function ResearchTabs() {
-  const ismob = isMobile()
+  const ismob = isMobile();
   console.log(ismob);
-  
+
   return (
     <Tabs
       aria-label="Dynamic tabs"

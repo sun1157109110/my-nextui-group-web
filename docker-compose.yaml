@@ -12,7 +12,7 @@ services:
       dockerfile: Dockerfile
     # env_file:
     #   - .env
-      # - .env.production
+    # - .env.production
     restart: always
     ports:
       - 3000:3000
@@ -21,7 +21,7 @@ services:
     # depends_on:
     #   mysql:
     #     condition: service_healthy
-      
+
   # mysql:
   #   image: mysql:8.0
   #   container_name: next-app-mysql
@@ -43,4 +43,3 @@ services:
   #     retries: 20
   #   networks:
   #     - groupweb-prod
-

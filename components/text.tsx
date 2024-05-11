@@ -1,7 +1,7 @@
 export function TypographyDemo() {
   return (
     <div className="rounded-md border p-4 ">
-      <h1 className="scroll-m-20 text-2xl sm:text-4xl font-extrabold tracking-tight lg:text-5xl">
+      <h1 className="scroll-m-20 text-2xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
         The Joke Tax Chronicles
       </h1>
       <p className="leading-7 [&:not(:first-child)]:mt-6">
@@ -9,7 +9,7 @@ export function TypographyDemo() {
         spent all day lounging on his throne. One day, his advisors came to him
         with a problem: the kingdom was running out of money.
       </p>
-      <h2 className="mt-10 scroll-m-20 border-b pb-2 text-xl sm:text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+      <h2 className="mt-10 scroll-m-20 border-b pb-2 text-xl font-semibold tracking-tight transition-colors first:mt-0 sm:text-3xl">
         The King's Plan
       </h2>
       <p className="leading-7 [&:not(:first-child)]:mt-6">
@@ -26,7 +26,7 @@ export function TypographyDemo() {
         "After all," he said, "everyone enjoys a good joke, so it's only fair
         that they should pay for the privilege."
       </blockquote>
-      <h3 className="mt-8 scroll-m-20 text-lg sm:text-2xl font-semibold tracking-tight">
+      <h3 className="mt-8 scroll-m-20 text-lg font-semibold tracking-tight sm:text-2xl">
         The Joke Tax
       </h3>
       <p className="leading-7 [&:not(:first-child)]:mt-6">
@@ -43,7 +43,7 @@ export function TypographyDemo() {
         gloom. But there was one person who refused to let the king's
         foolishness get him down: a court jester named Jokester.
       </p>
-      <h3 className="mt-8 scroll-m-20 text-lg sm:text-2xl font-semibold tracking-tight">
+      <h3 className="mt-8 scroll-m-20 text-lg font-semibold tracking-tight sm:text-2xl">
         Jokester's Revolt
       </h3>
       <p className="leading-7 [&:not(:first-child)]:mt-6">
@@ -57,7 +57,7 @@ export function TypographyDemo() {
         left by Jokester were so funny that they couldn't help but laugh. And
         once they started laughing, they couldn't stop.
       </p>
-      <h3 className="mt-8 scroll-m-20 text-lg sm:text-2xl font-semibold tracking-tight">
+      <h3 className="mt-8 scroll-m-20 text-lg font-semibold tracking-tight sm:text-2xl">
         The People's Rebellion
       </h3>
       <p className="leading-7 [&:not(:first-child)]:mt-6">
@@ -68,7 +68,7 @@ export function TypographyDemo() {
       <div className="my-6 w-full overflow-y-auto">
         <table className="w-full">
           <thead>
-            <tr className="even:bg-muted m-0 border-t p-0">
+            <tr className="m-0 border-t p-0 even:bg-muted">
               <th className="border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right">
                 King's Treasury
               </th>
@@ -78,7 +78,7 @@ export function TypographyDemo() {
             </tr>
           </thead>
           <tbody>
-            <tr className="even:bg-muted m-0 border-t p-0">
+            <tr className="m-0 border-t p-0 even:bg-muted">
               <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                 Empty
               </td>
@@ -86,7 +86,7 @@ export function TypographyDemo() {
                 Overflowing
               </td>
             </tr>
-            <tr className="even:bg-muted m-0 border-t p-0">
+            <tr className="m-0 border-t p-0 even:bg-muted">
               <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                 Modest
               </td>
@@ -94,7 +94,7 @@ export function TypographyDemo() {
                 Satisfied
               </td>
             </tr>
-            <tr className="even:bg-muted m-0 border-t p-0">
+            <tr className="m-0 border-t p-0 even:bg-muted">
               <td className="border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right">
                 Full
               </td>

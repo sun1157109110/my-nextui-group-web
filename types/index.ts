@@ -4,9 +4,9 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
 };
 export enum News_Type {
-  ACTIVITY = 'ACTIVITY',
-  LECTURE = 'LECTURE',
-  PUBLISH = 'PUBLISH'
+  ACTIVITY = "ACTIVITY",
+  LECTURE = "LECTURE",
+  PUBLISH = "PUBLISH",
 }
 export enum Role {
   PROFESSOR = "PROFESSOR",

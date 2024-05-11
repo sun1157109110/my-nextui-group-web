@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -8,17 +10,24 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/navbar";
 import { Kbd } from "@nextui-org/kbd";
-import { Link } from "@nextui-org/link";
+// import { Link as NextUILink} from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
-import NextLink from "next/link";
+import Link from "next/link";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { SearchIcon, NextUILogo } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { LanguageSwitch } from "./langueage-switch";
+import React from "react";
+import { usePathname } from "next/navigation";
 
 export const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState<boolean | undefined>(
+    false,
+  );
+  const pathname = usePathname();
+  console.log(pathname);
   const searchInput = (
     <Input
       aria-label="Search"
@@ -41,31 +50,33 @@ export const Navbar = () => {
   );
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky">
+    <NextUINavbar
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen}
+      maxWidth="xl"
+      position="sticky"
+    >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="max-w-fit gap-3">
-          <NextLink
-            className="flex items-center justify-start space-x-2"
-            href="/"
-          >
+          <Link className="flex items-center justify-start space-x-2" href="/">
             <NextUILogo className="h-8 w-8 text-indigo" />
             <p className="font-bold text-muted-foreground">Niu Group</p>
-          </NextLink>
+          </Link>
         </NavbarBrand>
         <ul className="ml-2 hidden justify-start gap-4  md:flex">
           {siteConfig.navItems.map((item) => (
             <NavbarItem key={item.href}>
-              <NextLink
+              <Link
                 className={cn(
-                  linkStyles({isBlock: true,color:'secondary' }),
-                  "hover:after:rounded hover:after:bg-secondary/90 hover:after:z-[-1] ",
+                  linkStyles({ isBlock: true, color: "secondary" }),
+                  "hover:after:z-[-1] hover:after:rounded hover:after:bg-secondary/90 ",
                   "data-[active=true]:font-medium data-[active=true]:text-primary",
-                  "text-muted-foreground text-base"
+                  "text-base text-muted-foreground",
                 )}
                 href={item.href}
               >
                 {item.label}
-              </NextLink>
+              </Link>
             </NavbarItem>
           ))}
         </ul>
@@ -85,7 +96,9 @@ export const Navbar = () => {
       <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
         <LanguageSwitch />
         <ThemeSwitch />
-        <NavbarMenuToggle />
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+        />
       </NavbarContent>
 
       <NavbarMenu>
@@ -94,8 +107,17 @@ export const Navbar = () => {
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
+                // as={Link}
+                className={cn(
+                  item.href === pathname
+                    ? "text-xl font-medium text-indigo dark:text-foreground"
+                    : "opacity-80 dark:opacity-60",
+                )}
                 href={item.href}
-                size="lg"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                }}
+                // size="lg"
               >
                 {item.label}
               </Link>

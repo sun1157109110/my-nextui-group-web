@@ -30,7 +30,7 @@ export default function PricingPage({ params }: Props) {
                     height={77}
                   />
                 </Link>
-                <span className="text-md  text-muted-foreground font-semibold">
+                <span className="text-md  font-semibold text-muted-foreground">
                   <Link className=" hover:text-indigo" href={""}>
                     {item.label}
                   </Link>
