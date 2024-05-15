@@ -52,7 +52,7 @@ export default function ResearchInfo() {
               </Link>
               <Link
                 href={siteConfig.navItems[3].href}
-                className="text-sm font-semibold text-muted-foreground  hover:text-indigo sm:text-base"
+                className="text-sm font-semibold  hover:text-indigo sm:text-base"
               >
                 {item.label}
               </Link>

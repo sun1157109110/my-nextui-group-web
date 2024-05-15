@@ -45,16 +45,15 @@ export default function RootLayout({
             <main className="container mx-auto max-w-7xl flex-grow px-6">
               {children}
             </main>
-            <footer className="flex w-full items-center justify-center py-3">
-              <Link
-                isExternal
-                className="flex items-center gap-1 text-current"
-                href="https://nextui-docs-v2.vercel.app?utm_source=next-app-template"
-                title="nextui.org homepage"
-              >
-                <span className="text-default-600">Powered by</span>
-                <p className="text-primary">NextUI</p>
-              </Link>
+            <footer className="flex w-full flex-col items-center justify-center py-3">
+              <span className="text-sm text-default-400">@2024</span>
+              <p className="text-primary">develop by NiuGroup</p>
+              {/* <iframe
+                className="hidden md:block md:h-[500px] md:w-[500px]"
+                src="https://m.amap.com/navi/?dest=121.427288,31.143561&destName=华东理工大学徐汇校区实验十五楼&hideRouteIcon=1&key=09aff3a270f1d29a7f4f1877ff46a63d"
+                loading="lazy"
+              ></iframe> */}
+              {/* <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d390.4176628127436!2d121.42682583782079!3d31.143259912119888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDA4JzM2LjYiTiAxMjHCsDI1JzM3LjgiRQ!5e0!3m2!1szh-CN!2shk!4v1715583605887!5m2!1szh-CN!2shk" width="600" height="450"  loading="lazy" ></iframe> */}
             </footer>
           </div>
         </Providers>

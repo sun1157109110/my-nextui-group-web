@@ -21,6 +21,7 @@ import { cn } from "@/lib/utils";
 import { LanguageSwitch } from "./langueage-switch";
 import React from "react";
 import { usePathname } from "next/navigation";
+import Search from "./search";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean | undefined>(
@@ -86,7 +87,9 @@ export const Navbar = () => {
         className="hidden basis-1/5 sm:flex sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+        <NavbarItem className="hidden lg:flex">
+          <Search />
+        </NavbarItem>
         <NavbarItem className="hidden gap-2 sm:flex">
           <LanguageSwitch />
           <ThemeSwitch />
@@ -102,7 +105,7 @@ export const Navbar = () => {
       </NavbarContent>
 
       <NavbarMenu>
-        {searchInput}
+        <Search />
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
