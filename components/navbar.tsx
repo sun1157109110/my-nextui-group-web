@@ -16,7 +16,7 @@ import { link as linkStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { SearchIcon, NextUILogo } from "@/components/icons";
+import { SearchIcon, NextUILogo, SearchLinearIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { LanguageSwitch } from "./langueage-switch";
 import React from "react";
@@ -99,13 +99,13 @@ export const Navbar = () => {
       <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
         <LanguageSwitch />
         <ThemeSwitch />
+        <Search type="icon" handleCloseMenu={()=>{setIsMenuOpen(false)}}/>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
       </NavbarContent>
 
       <NavbarMenu>
-        <Search />
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>

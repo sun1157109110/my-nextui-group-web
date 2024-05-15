@@ -14,12 +14,12 @@ import { isAppleDevice, isWebKit } from "@react-aria/utils";
 import { Command } from "cmdk";
 import { cn } from "@/lib/utils";
 import { Modal, ModalContent } from "@nextui-org/modal";
-import { isEmpty,debounce } from "lodash";
+import { isEmpty, debounce } from "lodash";
 import { tv } from "tailwind-variants";
 import { siteConfig } from "@/config/site";
 import { writeStorage, useLocalStorage } from "@rehooks/local-storage";
 
-type Props = {};
+type Props = { type?: "input" | "icon"; handleCloseMenu?: () => void };
 interface SearchResultItem {
   content: string;
   objectID: string;
@@ -111,14 +111,14 @@ const RECENT_SEARCHES_KEY = "recent-searches";
 const MAX_RECENT_SEARCHES = 10;
 const MAX_RESULTS = 30;
 
-const Search = (props: Props) => {
+const Search = ({ type = "input", handleCloseMenu }: Props) => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const router = useRouter();
   const [commandKey, setCommandKey] = useState<"ctrl" | "command">("command");
   const slots = useMemo(() => cmdk(), []);
   const [recentSearches] = useLocalStorage<any[]>(RECENT_SEARCHES_KEY);
-  const inputLock = useRef(false);
+  // const inputLock = useRef(false);
 
   const addToRecentSearches = (item: any) => {
     let searches = recentSearches ?? [];
@@ -227,29 +227,39 @@ const Search = (props: Props) => {
     },
     [],
   );
-  const searchButton = (
-    <Button
-      aria-label="Quick search"
-      className="bg-default-400/20 text-sm font-normal text-default-500 dark:bg-default-500/20"
-      endContent={
-        <Kbd className="hidden px-2 py-0.5 lg:inline-block" keys={commandKey}>
-          K
-        </Kbd>
-      }
-      startContent={
-        <SearchLinearIcon
-          className="pointer-events-none flex-shrink-0 text-base text-default-400"
-          size={18}
-          strokeWidth={2}
-        />
-      }
-      onPress={() => {
-        setOpen(true);
-      }}
-    >
-      Quick Search...
-    </Button>
-  );
+
+  const searchButton =
+    type === "input" ? (
+      <Button
+        aria-label="Quick search"
+        className="bg-default-400/20 text-sm font-normal text-default-500 dark:bg-default-500/20"
+        endContent={
+          <Kbd className="hidden px-2 py-0.5 lg:inline-block" keys={commandKey}>
+            K
+          </Kbd>
+        }
+        startContent={
+          <SearchLinearIcon
+            className="pointer-events-none flex-shrink-0 text-base text-default-400"
+            size={18}
+            strokeWidth={2}
+          />
+        }
+        onPress={() => {
+          setOpen(true);
+        }}
+      >
+        Quick Search...
+      </Button>
+    ) : (
+      <SearchLinearIcon
+        className="mt-px text-default-600 dark:text-default-500"
+        size={20}
+        onClick={() => {
+          setOpen(true);
+        }}
+      />
+    );
   // const handleComposition = (e: React.CompositionEvent) => {
   //   if (e.type === "compositionend") {
   //     inputLock.current = false;
@@ -282,6 +292,7 @@ const Search = (props: Props) => {
           onSelect={() => {
             setOpen(false);
             router.push(item.url);
+            if (type === "icon" && handleCloseMenu) handleCloseMenu();
             addToRecentSearches(item);
           }}
         >
@@ -346,7 +357,7 @@ const Search = (props: Props) => {
                 // onCompositionStart={handleComposition}
                 // onCompositionEnd={handleComposition}
                 // onValueChange={(v)=>{if(!inputLock.current)setQuery(v)}}
-                onValueChange={debounce(setQuery,200)}
+                onValueChange={debounce(setQuery, 200)}
               />
               {query.length > 0 && <CloseButton onPress={() => setQuery("")} />}
               <Kbd className="ml-2 hidden border-none px-2 py-1 text-[0.6rem] font-medium md:block">
