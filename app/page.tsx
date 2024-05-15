@@ -5,7 +5,7 @@ import News from "@/components/news";
 
 const imgs = Array(5)
   .fill(0)
-  .map(() => faker.image.urlLoremFlickr({ category: "city", width: 1500 }));
+  .map(() => faker.image.urlLoremFlickr({ category: "city", width: 1600,height:384 }));
 export default function Home() {
   return (
     <section className="flex flex-col items-center justify-center gap-2 pb-8 sm:gap-4 md:pb-10">

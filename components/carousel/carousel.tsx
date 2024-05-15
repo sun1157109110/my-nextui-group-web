@@ -140,8 +140,8 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                     alt="carousel_img"
                     isZoomed
                     // priority={index === 0 ? true : false}
-                    width={1500}
-                    height={480}
+                    width={1600}
+                    height={384}
                     // quality={100}
                   />
                 </div>

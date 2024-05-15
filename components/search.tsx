@@ -14,7 +14,7 @@ import { isAppleDevice, isWebKit } from "@react-aria/utils";
 import { Command } from "cmdk";
 import { cn } from "@/lib/utils";
 import { Modal, ModalContent } from "@nextui-org/modal";
-import { intersectionBy, isEmpty, result } from "lodash";
+import { isEmpty,debounce } from "lodash";
 import { tv } from "tailwind-variants";
 import { siteConfig } from "@/config/site";
 import { writeStorage, useLocalStorage } from "@rehooks/local-storage";
@@ -138,8 +138,7 @@ const Search = (props: Props) => {
       );
     }
   };
-
-  const results = useMemo(() => {
+  const getResults = () => {
     if (query.length < 2) return [];
     const res: any = [];
     siteConfig.news.forEach(
@@ -180,9 +179,8 @@ const Search = (props: Props) => {
       },
     );
     return res.slice(0, MAX_RESULTS);
-  }, [query]);
-
-  const items: any[] = results;
+  };
+  const results = useMemo(() => getResults(), [query]);
   useEffect(() => {
     setCommandKey(isAppleDevice() ? "command" : "ctrl");
   }, []);
@@ -344,11 +342,11 @@ const Search = (props: Props) => {
                 autoFocus={!isWebKit()}
                 className={slots.input()}
                 placeholder="Search documentation"
-                value={query}
+                // value={query}
                 // onCompositionStart={handleComposition}
                 // onCompositionEnd={handleComposition}
                 // onValueChange={(v)=>{if(!inputLock.current)setQuery(v)}}
-                onValueChange={setQuery}
+                onValueChange={debounce(setQuery,200)}
               />
               {query.length > 0 && <CloseButton onPress={() => setQuery("")} />}
               <Kbd className="ml-2 hidden border-none px-2 py-1 text-[0.6rem] font-medium md:block">
