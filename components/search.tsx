@@ -344,6 +344,7 @@ const Search = (props: Props) => {
                 autoFocus={!isWebKit()}
                 className={slots.input()}
                 placeholder="Search documentation"
+                value={query}
                 // onCompositionStart={handleComposition}
                 // onCompositionEnd={handleComposition}
                 // onValueChange={(v)=>{if(!inputLock.current)setQuery(v)}}
