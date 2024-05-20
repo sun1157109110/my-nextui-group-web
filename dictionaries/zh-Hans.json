@@ -1,0 +1,21 @@
+{
+  "title": "牛德超课题组官网",
+  "description": "牛德超课题组官网！",
+  "menu": {
+    "home": "首页",
+    "members": "组内成员",
+    "research": "研究方向",
+    "publish": "发表论文",
+    "activity": "团建活动"
+  },
+  "researchInfo": {
+    "title": "代表性研究"
+  },
+  "news": {
+    "title": "新闻动态"
+  },
+  "search": {
+    "placeholder": "查找信息",
+    "empty": "没有找到相关信息"
+  }
+}

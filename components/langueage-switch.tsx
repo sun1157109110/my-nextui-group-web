@@ -1,82 +1,54 @@
 "use client";
 
-import { FC, useState } from "react";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { SwitchProps, useSwitch } from "@nextui-org/switch";
-// import { useTheme } from "next-themes";
-import { useIsSSR } from "@react-aria/ssr";
+import { FC, useEffect} from "react";
 
 import { ChineseIcon, EnglishIcon } from "@/components/icons";
-import { cn } from "@/lib/utils";
+import {  useLocalStorage } from "@rehooks/local-storage";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { useIsSSR } from "@react-aria/ssr";
+import { defaultLocale } from "@/dictionaries";
 
-export interface LanguageSwitchProps {
-  className?: string;
-  classNames?: SwitchProps["classNames"];
-}
+export interface LanguageSwitchProps {}
 
-export const LanguageSwitch: FC<LanguageSwitchProps> = ({
-  className,
-  classNames,
-}) => {
-  const [lan, setLan] = useState("chinese");
-  // const { theme, setTheme } = useTheme();
+const LanguageSwitch: FC<LanguageSwitchProps> = () => {
+  const params = useParams();
+  const [lang, setLang] = useLocalStorage("lang", defaultLocale );
   const isSSR = useIsSSR();
 
-  const onChange = () => {
-    lan === "chinese" ? setLan("english") : setLan("chinese");
+  // const pathname = usePathname().replace(`/${lang}`, "");
+
+  const pathname = usePathname();
+  const router = useRouter();
+  // console.log(params.lang);
+  // console.log("------");
+  // console.log(lang);
+
+  useEffect(() => {
+    if (!lang) return;
+    document.documentElement.lang = lang || defaultLocale ;
+    // if (params.lang === lang || !lang) {
+    //   setLang(params.lang as string)
+    //   return;
+    // }
+    if (params.lang === lang) return;
+    // setLang(params.lang as string)
+    router.replace(pathname.replace(params.lang as string, lang));
+  }, [params.lang, pathname, router, lang]);
+  const handleChange = () => {
+    if (!lang) return;
+    setLang(lang === "zh-Hans" ? "en" : "zh-Hans");
   };
-
-  const {
-    Component,
-    slots,
-    isSelected,
-    getBaseProps,
-    getInputProps,
-    getWrapperProps,
-  } = useSwitch({
-    isSelected: lan === "chinese" || isSSR,
-    "aria-label": `Switch to ${lan === "chinese" || isSSR ? "chinese" : "english"} mode`,
-    onChange,
-  });
-
+  const isSelected = lang === "en" || isSSR;
+  // console.log( isSSR ,typeof window);
   return (
-    <Component
-      {...getBaseProps({
-        className: cn(
-          "px-px transition-opacity hover:opacity-80 cursor-pointer",
-          className,
-          classNames?.base,
-        ),
-      })}
-    >
-      <VisuallyHidden>
-        <input {...getInputProps()} />
-      </VisuallyHidden>
-      <div
-        {...getWrapperProps()}
-        className={slots.wrapper({
-          class: cn(
-            [
-              "h-auto w-auto",
-              "bg-transparent",
-              "rounded-lg",
-              "flex items-center justify-center",
-              "group-data-[selected=true]:bg-transparent",
-              "!text-default-500",
-              "pt-px",
-              "px-0",
-              "mx-0",
-            ],
-            classNames?.wrapper,
-          ),
-        })}
-      >
-        {!isSelected || isSSR ? (
-          <ChineseIcon size={22} />
-        ) : (
-          <EnglishIcon size={22} />
-        )}
-      </div>
-    </Component>
+    <div className="cursor-pointer !text-default-500" onClick={handleChange}>
+      {!isSelected || isSSR ? (
+        <EnglishIcon size={22} />
+      ) : (
+        <ChineseIcon size={22} />
+      )}
+    </div>
   );
 };
+
+export default LanguageSwitch;

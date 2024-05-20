@@ -6,7 +6,6 @@ import { Tabs, Tab } from "@nextui-org/tabs";
 import { isMobile } from "@/lib/utils";
 export default function ResearchTabs() {
   const ismob = isMobile();
-  console.log(ismob);
 
   return (
     <Tabs

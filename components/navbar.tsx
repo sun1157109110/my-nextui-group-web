@@ -9,47 +9,28 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Kbd } from "@nextui-org/kbd";
-// import { Link as NextUILink} from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
 import { link as linkStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import Link from "next/link";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { SearchIcon, NextUILogo, SearchLinearIcon } from "@/components/icons";
+import { NextUILogo, SearchLinearIcon } from "@/components/icons";
 import { cn } from "@/lib/utils";
-import { LanguageSwitch } from "./langueage-switch";
+import  LanguageSwitch  from "./langueage-switch";
 import React from "react";
 import { usePathname } from "next/navigation";
 import Search from "./search";
+import { Dictionary, Locale } from "@/dictionaries";
 
-export const Navbar = () => {
+
+type Props = {
+  dict: Dictionary;
+  lang: Locale;
+};
+export const Navbar = ({ dict, lang }: Props) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean | undefined>(
     false,
   );
   const pathname = usePathname();
-  console.log(pathname);
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="pointer-events-none flex-shrink-0 text-base text-default-400" />
-      }
-      type="search"
-    />
-  );
-
   return (
     <NextUINavbar
       isMenuOpen={isMenuOpen}
@@ -74,9 +55,9 @@ export const Navbar = () => {
                   "data-[active=true]:font-medium data-[active=true]:text-primary",
                   "text-base text-muted-foreground",
                 )}
-                href={item.href}
+                href={`/${lang}${item.href}`}
               >
-                {item.label}
+                {dict.menu[item.label as keyof typeof dict.menu]}
               </Link>
             </NavbarItem>
           ))}
@@ -99,7 +80,12 @@ export const Navbar = () => {
       <NavbarContent className="basis-1 pl-4 sm:hidden" justify="end">
         <LanguageSwitch />
         <ThemeSwitch />
-        <Search type="icon" handleCloseMenu={()=>{setIsMenuOpen(false)}}/>
+        <Search
+          type="icon"
+          handleCloseMenu={() => {
+            setIsMenuOpen(false);
+          }}
+        />
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
@@ -116,13 +102,12 @@ export const Navbar = () => {
                     ? "text-xl font-medium text-indigo dark:text-foreground"
                     : "opacity-80 dark:opacity-60",
                 )}
-                href={item.href}
+                href={`/${lang}${item.href}`}
                 onClick={() => {
                   setIsMenuOpen(false);
                 }}
-                // size="lg"
               >
-                {item.label}
+                {dict.menu[item.label as keyof typeof dict.menu]}
               </Link>
             </NavbarMenuItem>
           ))}

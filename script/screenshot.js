@@ -11,9 +11,9 @@ async function screenshot(url, path) {
   await page.goto(url, {
     waitUntil: 'networkidle0'
   });
-  const cookies = await page.cookies();
-  await page.setCookie(...cookies);
-  console.log(cookies,'@@');
+  // const cookies = await page.cookies();
+  // await page.setCookie(...cookies);
+  // console.log(cookies,'@@');
   await page.screenshot({
     path: path,
     fullPage: true,
@@ -22,4 +22,4 @@ async function screenshot(url, path) {
   await browser.close();
 }
 
-screenshot('https://juejin.cn/', 'test1.webp')
+screenshot('https://www.baidu.com/', 'test1.png')

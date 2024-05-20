@@ -12,23 +12,23 @@ const siteConfig = {
     "Beautifully designed components built with Radix UI and Tailwind CSS.",
   navItems: [
     {
-      label: "首页",
+      label: "home",
       href: "/",
     },
     {
-      label: "组内成员",
+      label: "members",
       href: "/members",
     },
     {
-      label: "科研方向",
+      label: "research",
       href: "/research",
     },
     {
-      label: "发表论文",
+      label: "publish",
       href: "/publish/list/1",
     },
     {
-      label: "团建活动",
+      label: "activity",
       href: "/activity/list/1",
     },
   ],
@@ -243,23 +243,23 @@ const siteConfig = {
   ],
   navMenuItems: [
     {
-      label: "首页",
+      label: "home",
       href: "/",
     },
     {
-      label: "组内成员",
+      label: "members",
       href: "/members",
     },
     {
-      label: "科研方向",
+      label: "research",
       href: "/research",
     },
     {
-      label: "发表论文",
+      label: "publish",
       href: "/publish/list/1",
     },
     {
-      label: "团建活动",
+      label: "activity",
       href: "/activity/list/1",
     },
   ],

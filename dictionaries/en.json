@@ -1,0 +1,21 @@
+{
+  "title": "Niu Group",
+  "description": "Niu Group！",
+  "menu": {
+    "home": "Home",
+    "members": "Members",
+    "research": "Research",
+    "publish": "Publish",
+    "activity": "Activity"
+  },
+  "researchInfo": {
+    "title": "Representative research"
+  },
+  "news": {
+    "title": "News"
+  },
+  "search": {
+    "placeholder": "Quick Research",
+    "empty": "No recent searches"
+  }
+}

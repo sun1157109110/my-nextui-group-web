@@ -4,8 +4,8 @@ import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Providers } from "./providers";
 import { Navbar } from "@/components/navbar";
-import { Link } from "@nextui-org/link";
 import { cn } from "@/lib/utils";
+import { Locale, getDictionary } from "@/dictionaries";
 
 export const metadata: Metadata = {
   title: {
@@ -25,13 +25,17 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: { lang: Locale };
 }) {
+  const dict = await getDictionary(params.lang);
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html suppressHydrationWarning>
       <head />
       <body
         className={cn(
@@ -41,7 +45,7 @@ export default function RootLayout({
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "light" }}>
           <div className="relative flex h-screen flex-col">
-            <Navbar />
+            <Navbar dict={dict} lang={params.lang} />
             <main className="container mx-auto max-w-7xl flex-grow px-6">
               {children}
             </main>

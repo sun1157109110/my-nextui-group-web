@@ -28,6 +28,7 @@
   display: block;
   /* height: var(--slide-height); */
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 .embla__button--prev,

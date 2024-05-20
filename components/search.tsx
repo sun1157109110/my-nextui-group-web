@@ -286,7 +286,7 @@ const Search = ({ type = "input", handleCloseMenu }: Props) => {
 
       return (
         <Command.Item
-          key={item.objectID}
+          key={item.title+index}
           className={slots.itemWrapper()}
           value={`${item.title}${item.content}${index}`}
           onSelect={() => {

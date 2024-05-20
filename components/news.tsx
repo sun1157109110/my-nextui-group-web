@@ -2,8 +2,12 @@ import { siteConfig } from "@/config/site";
 import { Icons, IconsKeys } from "./icons";
 import { Divider } from "@nextui-org/divider";
 import Link from "next/link";
-
-export default function News() {
+import { Dictionary, Locale } from "@/dictionaries";
+type Props = {
+  dict: Dictionary;
+  lang: Locale;
+};
+export default function News({ dict, lang }: Props) {
   return (
     <div className="flex basis-1/2 flex-col ">
       <div className="flex items-center gap-2 py-2 sm:gap-4">
@@ -11,7 +15,9 @@ export default function News() {
           orientation="vertical"
           className="h-4 w-0.5 bg-indigo sm:h-7 sm:w-1"
         />
-        <div className="text-base font-semibold sm:text-xl">新闻动态</div>
+        <div className="text-base font-semibold sm:text-xl">
+          {dict.news.title}
+        </div>
       </div>
       <Divider className=" bg-indigo" />
       {siteConfig.news.map((item) => (
